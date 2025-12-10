@@ -8,11 +8,11 @@ const WhatsAppChat = () => {
   const whatsappUrl =
     "https://api.whatsapp.com/send/?phone=918109935050&text=Hello%21+I+would+like+to+know+more+about+your+services&type=phone_number&app_absent=0";
 
-  // Add a subtle bounce animation to the button
+  // Button bounce animation
   useEffect(() => {
     const interval = setInterval(() => {
       setAnimateButton((prev) => !prev);
-    }, 2000); // bounce every 2 seconds
+    }, 2000);
     return () => clearInterval(interval);
   }, []);
 
@@ -25,22 +25,22 @@ const WhatsAppChat = () => {
           position: "fixed",
           bottom: "20px",
           right: "20px",
-          background: "linear-gradient(45deg, #25D366, #128C7E)",
+          background: "linear-gradient(135deg, #25D366, #128C7E)",
           color: "white",
           border: "none",
           borderRadius: "50%",
           width: "70px",
           height: "70px",
-          fontSize: "32px",
+          fontSize: "34px",
           cursor: "pointer",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          boxShadow: "0 6px 12px rgba(0,0,0,0.3)",
-          transform: `${isOpen ? "rotate(20deg)" : "rotate(0deg)"} ${
-            animateButton ? "translateY(-5px)" : "translateY(0)"
+          boxShadow: "0 8px 20px rgba(0,0,0,0.35)",
+          transform: `${isOpen ? "rotate(25deg)" : "rotate(0deg)"} ${
+            animateButton ? "translateY(-6px)" : "translateY(0)"
           }`,
-          transition: "transform 0.3s ease, box-shadow 0.3s ease",
+          transition: "all 0.35s ease",
           zIndex: 1001,
         }}
         title="Chat with us on WhatsApp"
@@ -48,29 +48,42 @@ const WhatsAppChat = () => {
         <FaWhatsapp />
       </button>
 
-      {/* Animated Chat Popup */}
+      {/* Popup with smooth bottom animation */}
       <div
         style={{
           position: "fixed",
-          bottom: isOpen ? "100px" : "-500px",
+          bottom: "110px",
           right: "20px",
-          width: "320px",
+          width: "330px",
           backgroundColor: "#ffffff",
-          borderRadius: "15px",
-          boxShadow: "0 8px 20px rgba(0,0,0,0.25)",
-          padding: "15px",
+          borderRadius: "18px",
+          padding: "18px",
+          boxShadow: "0 10px 25px rgba(0,0,0,0.25)",
           zIndex: 1000,
-          transition: "bottom 0.5s ease, opacity 0.5s ease",
+          borderTop: "5px solid #25D366",
+
+          // ⭐ ANIMATION HERE ⭐
+          transform: isOpen ? "translateY(0)" : "translateY(40px)",
           opacity: isOpen ? 1 : 0,
-          borderTop: "4px solid #25D366",
+          pointerEvents: isOpen ? "auto" : "none",
+          transition: "transform 0.45s ease, opacity 0.45s ease",
         }}
       >
-        <h4 style={{ marginBottom: "10px", color: "#128C7E" }}>
+        <h3
+          style={{
+            marginBottom: "10px",
+            color: "#128C7E",
+            fontWeight: "700",
+            fontSize: "18px",
+          }}
+        >
           💬 Chat with us on WhatsApp!
-        </h4>
-        <p style={{ marginBottom: "15px", fontSize: "14px", color: "#555" }}>
-          We are online and ready to help you. Click below to start chatting.
+        </h3>
+
+        <p style={{ marginBottom: "15px", fontSize: "14px", color: "#444" }}>
+          Our team is online and ready to help you instantly.
         </p>
+
         <a
           href={whatsappUrl}
           target="_blank"
@@ -78,21 +91,23 @@ const WhatsAppChat = () => {
           style={{
             display: "block",
             textAlign: "center",
-            backgroundColor: "#25D366",
+            background: "linear-gradient(135deg, #25D366, #128C7E)",
             color: "white",
-            padding: "12px",
-            borderRadius: "8px",
+            padding: "14px",
+            borderRadius: "10px",
             textDecoration: "none",
             fontWeight: "bold",
             fontSize: "16px",
-            boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
-            transition: "background 0.3s ease",
+            boxShadow: "0 6px 18px rgba(0,0,0,0.25)",
+            transition: "0.3s",
           }}
           onMouseEnter={(e) =>
-            (e.currentTarget.style.background = "#128C7E")
+            (e.currentTarget.style.background =
+              "linear-gradient(135deg, #128C7E, #0e6e63)")
           }
           onMouseLeave={(e) =>
-            (e.currentTarget.style.background = "#25D366")
+            (e.currentTarget.style.background =
+              "linear-gradient(135deg, #25D366, #128C7E)")
           }
         >
           Start Chat
